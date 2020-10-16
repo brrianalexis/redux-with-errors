@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTask } from "../../store";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../store';
 
 function NewTask() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const dispatch = useDispatch();
 
   function handleChange(e) {
@@ -14,11 +14,12 @@ function NewTask() {
 
   function handleClick() {
     dispatch(addTask(value));
+    setValue('');
   }
 
   return (
     <div>
-      <input type="text" onChange={handleChange} />
+      <input type="text" onChange={handleChange} value={value} />
       <button onClick={handleClick}>Agregar</button>
     </div>
   );
