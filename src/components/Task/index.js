@@ -1,17 +1,15 @@
-import React from "react";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeTask } from '../../store';
 
 function Task(props) {
-  return (
-    <li
-      onClick={() => {
-        alert(
-          "Bueno, esto teoricamente deberia borrarme, pero definitivamente no lo hace"
-        );
-      }}
-    >
-      {props.value}
-    </li>
-  );
+  const dispatch = useDispatch();
+
+  const removeTaskFromList = value => {
+    dispatch(removeTask(value));
+  };
+
+  return <li onClick={() => removeTaskFromList(props.value)}>{props.value}</li>;
 }
 
 export default Task;
